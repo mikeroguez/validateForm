@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Registro CITI 2012</title>
+		<meta name="generator" content="flavorPHP" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<link rel="stylesheet" href="css/bootstrap/css/bootstrap.css" type="text/css" />
+		<link rel="stylesheet" href="css/bootstrap/css/bootstrap-responsive.css" type="text/css" />
+		<link rel="stylesheet" href="css/docs.css" type="text/css" />
+
+		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+		<!--[if lt IE 9]>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->		
+	</head>
+	<body>
+		<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</a>
+					<a class="brand" href="#">Registro CITI 2012</a>
+					<div class="nav-collapse pull-right">
+						<ul class="nav">
+							<li><a href="#">cPanel</a></li>
+							<li><a href="#">Asistencia</a></li>
+							<li><a href="#">Talleres</a></li>
+							<li><a href="#">Captura</a></li>
+							<li><a href="#">Buscador</a></li>							
+						</ul>
+					</div> <!--/.nav-collapse -->
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<ul class="breadcrumb">
+				<li><a href="#">Inicio</a> <span class="divider">/</span></li>
+				<li class="active">Registro</li>
+			</ul>		
+			<!-- inicio contenido -->
+			
+			<h1 class="centerTxt">Hoja de captura</h1>
+			<br/>
+			<form id="registroFrm">
+				<div class="row">
+					<div class="offset4 span4 well">
+						<div class="noMargin control-group">
+							<label for="first_name">Nombre</label>
+							<input class="{required:'true', name:'Nombre'} width100" id="first_name" name="first_name" type="text" placeholder="Juan" />			
+						</div>
+
+						<div class="noMargin control-group">
+							<label for="last_name">Apellido</label>
+							<input class="{required:'true', name:'Apellido'} width100" id="last_name" name="last_name" type="text" placeholder="Pérez Pérez" />
+						</div>
+					</div>
+				</div>
+				
+				<div class="row-fluid" >
+					<div class="span12">
+						<div class="span6 well">
+							<input type="radio" name="user_type" id="user_type_general" value="general" checked="checked" /> Público general
+							<br/><br/>
+							<div class="noMargin control-group">
+								<label for="institution">Institución</label>
+								<input class="{specialCase:'general', name:'Institucion'} width100" id="institution" name="institution" type="text" placeholder="Tecnológico de Colima" />
+							</div>
+							
+							<div class="noMargin control-group">
+								<label for="dependence">Dependencia</label>
+								<input class="{specialCase:'general', name:'Dependencia'} width100" id="dependence" name="dependence" type="text" placeholder="Escuela de Ingeniería" />
+							</div>
+							
+							<div class="noMargin control-group">
+								<label for="Address">Dirección</label>
+								<input class="{specialCase:'general', name:'Dirección'} width100" id="Address" name="Address" type="text" placeholder="Calle y número" />
+							</div>
+							
+							<div class="noMargin control-group">
+								<label for="email">Email</label>
+								<input class="{specialCase:'general', name:'Email', type:'email'}" id="email" name="email" type="text" placeholder="micorreo@servidor.com" />
+							</div>
+							
+							<div class="noMargin control-group">
+								<label for="country">País</label>
+								<input class="{specialCase:'general', name:'País'}" id="country" name="country" type="text" placeholder="México" />
+							</div>
+							
+							<div class="noMargin control-group">
+								<label for="state">Estado</label>
+								<input class="{specialCase:'general', name:'Estado'}" id="state" name="state" type="text" placeholder="Colima" />
+							</div>
+							
+							<div class="noMargin control-group">
+								<label for="zip_code">Código postal</label>
+								<input class="{specialCase:'general', name:'Código postal'}" id="zip_code" name="zip_code" type="text" placeholder="28040" />
+							</div>
+						</div>
+					
+						<div class="span6 well">
+							<input type="radio" name="user_type" id="user_type_ucol" value="ucol" /> Universitarios
+							<br/><br/>
+							<div class="noMargin control-group">
+								<label for="acount">No. de Cuenta</label>
+								<input class="{specialCase:'ucol', name:'No. de Cuenta'} span3" id="acount" name="acount" type="text" placeholder="2012-0001" />
+							</div>
+							
+							<div class="noMargin control-group">
+								<label for="school">Facultad o Bachillerato</label>
+								<input class="{specialCase:'ucol', name:'Facultad o Bachillerato'} width100" id="school" name="school" type="text" placeholder="Facultad de Telemática" />
+							</div>
+							
+							<div class="noMargin control-group">
+								<label for="semester">Semestre</label>
+								<input class="{specialCase:'ucol', name:'Semestre', type:'numero'} span1" id="semester" name="semester" type="text" placeholder="1" />
+							</div>
+							
+							<div class="noMargin control-group">
+								<label for="career">Carrera</label>
+								<input class="{specialCase:'ucol', name:'Carrera'}" id="career" name="career" type="text" placeholder="Ingeniería en software" />
+							</div>
+
+							<div class="noMargin control-group">
+								<label for="group">Grupo</label>
+								<input class="{specialCase:'ucol', name:'Grupo'} span1" id="group" name="group" type="text" placeholder="A" />
+							</div>
+						</div>
+					</div>			
+				</div>
+				<h2 class="centerTxt">Tipo de participación</h2>
+				<div class="row">
+					<div class="offset4 span4 well centerTxt">
+						<input id="conferences" name="conferences" type="checkbox" /> Conferencias <br/><br/>
+						<div class="row-fluid">
+							<div class="span12">
+								<div class="span6 textRight">
+									<label>Talleres</label>
+								</div>
+								<div class="span6 textLeft">
+									<input id="workshop1" name="workshop[]" type="checkbox" /> Taller 1 <br/>
+									<input id="workshop2" name="workshop[]" type="checkbox" /> Taller 2 <br/>
+									<input id="workshop3" name="workshop[]" type="checkbox" /> Taller 3 <br/>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="offset4 span4 centerTxt form-actions">
+						<div id="errorFrm" class="alert alert-error" style="display:none;"></div>
+						<div class="row-fluid">
+							<div class="span12" >
+								<div class="span6">
+									<input class="btn" type="reset" value="Borrar" />
+								</div>
+								<div class="span6">
+									<input class="btn btn-success" type="submit" value="Registrar" />
+								</div>
+							</div>
+						</div>
+					</div>					
+				</div>
+			
+			</form>
+			<!-- fin contenido -->
+		</div> <!-- /container -->		
+		<!-- Le javascript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster - MikeRoguez -->
+		<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/jquery.validateForm.js"></script>		
+		<script type="text/javascript" src="js/application.js"></script>
+		<!-- ============================================= -->
+	</body>
+</html>
