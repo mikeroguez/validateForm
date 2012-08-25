@@ -15,14 +15,14 @@
 						useErrorDiv: true,
 						errorDivId: 'errorDiv',
 						bootstrapCss: true,
-						errorMsg: 'Error en el campo ',
+						errorMsg: 'Error in field ',
 						requiredMsg: 'required'
 					},
 					rules: {
-						text : { json : /^[a-zA-ZáéíóúüÁÉÍÓÚÜñÑ0-9]+$/, message : 'Introduzca solo texto'},
-						alfanumeric : { json : /[0-9a-zA-Z]/, message : 'Introduzca valores autonuméricos'},
-						numeric : { json : /^-?\d+(?:\.\d{0,3})?$/, message : 'Introduzca solo n&uacute;meros'},
-						email : { json : /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, message : 'Introduzca un correo v&aacute;lido'}					
+						text : { json : /^[a-zA-ZáéíóúüÁÉÍÓÚÜñÑ0-9]+$/, message : 'Only text is allowed'},
+						alfanumeric : { json : /[0-9a-zA-Z]/, message : 'Only alphanumeric values are allowed'},
+						numeric : { json : /^-?\d+(?:\.\d{0,3})?$/, message : 'Only numbers are allowed'},
+						email : { json : /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, message : 'Enter a valid email'}					
 					},
 					specialCases: {
 					}
