@@ -31,6 +31,11 @@
 				}, options);			
 				
 				$this.bind('submit', function(){ return $this.validateForm('validate') } );
+				$this.find('input, textarea, select').bind('keyup', function(){ 
+					if( validateObject($(this)) ){
+						clearError($(this))
+					}
+				})
 			});
 			
 		},
@@ -47,48 +52,7 @@
 			clearErrors($form);	
 			$form.find('input, textarea, select').each( 
 				function(){
-					clase = ($(this).attr('class') != undefined ) ? $(this).attr('class') : "";
-					if(clase.charAt(0)=="{"){
-					
-						if(clase.indexOf('}') == -1){
-							$.error( 'Error on validation rule on a field [jQuery.validateForm]' );
-							return false;
-						}else{
-							ObjRules = clase.substring(0, clase.indexOf('}')+1);
-						}
-						eval('$ObjRules='+ObjRules);
-						
-						if( $(this).is("textarea") || $(this).is(":text")){
-							$required = ($ObjRules.required === undefined) ? 'false' : $ObjRules.required;
-							
-							if( $required == 'true' || ( $required != 'true' && $(this).val() != "" )){
-								
-								if( $options.rules[$ObjRules.type] !== undefined ){
-									if( !$(this).val().match( ( $ObjRules.type !== undefined ) ? $options.rules[$ObjRules.type].json : "" ) ){
-									/* = Checa contra las reglas $rules = */
-										$valida &= false;
-										printError($(this), $options.settings.errorMsg + $ObjRules.name + ": '" + $options.rules[$ObjRules.type].message + "'");
-									}
-								}
-								
-								if( $required == 'true' && $(this).val() == ""){
-								/* = Checa si es requerido que no esté vacío = */
-									$valida &= false;
-									printError($(this), $options.settings.errorMsg + $ObjRules.name + ": '"+$options.settings.requiredMsg+"'");
-								}
-
-							}
-						}
-
-						if( $ObjRules.specialCase !== undefined ){
-							if( $options.specialCases[$ObjRules.specialCase] !== undefined ){
-								result = $options.specialCases[$ObjRules.specialCase].funcion( $(this) )
-								if( !result ) printError($(this), $options.settings.errorMsg + $ObjRules.name + ": '" + $options.specialCases[$ObjRules.specialCase].message + "'");
-								$valida &= result
-							}
-						}
-						
-					}
+					$valida &= validateObject($(this));
 				}
 			);
 			return ($valida) ? true : false;			
@@ -104,14 +68,18 @@
 
 		form.find('input, textarea, select').each( 
 			function(){
-				$(this).parent().removeClass( $options.settings.errorClasses );
-				if( $options.settings.bootstrapCss ){
-					$(this).parent().removeClass( $options.settings.errorClasses );
-				}else{
-					$(this).removeClass( $options.settings.errorClasses );
-				}				
+				clearError ($(this));
 			}
 		);	
+	}
+
+	function clearError(object) {
+		object.parent().removeClass( $options.settings.errorClasses );
+		if( $options.settings.bootstrapCss ){
+			object.parent().removeClass( $options.settings.errorClasses );
+		}else{
+			object.removeClass( $options.settings.errorClasses );
+		}	
 	}
 	
 	function printError(object, message){
@@ -125,6 +93,53 @@
 		}else{
 			object.addClass($options.settings.errorClasses);
 		}
+	}
+
+	function validateObject($object){
+		$valida = true;
+		clase = ($object.attr('class') != undefined ) ? $object.attr('class') : "";
+		if(clase.charAt(0)=="{"){
+		
+			if(clase.indexOf('}') == -1){
+				$.error( 'Error on validation rule on a field [jQuery.validateForm]' );
+				return false;
+			}else{
+				ObjRules = clase.substring(0, clase.indexOf('}')+1);
+			}
+			eval('$ObjRules='+ObjRules);
+			
+			if( $object.is("textarea") || $object.is(":text")){
+				$required = ($ObjRules.required === undefined) ? 'false' : $ObjRules.required;
+				
+				if( $required == 'true' || ( $required != 'true' && $object.val() != "" )){
+					
+					if( $options.rules[$ObjRules.type] !== undefined ){
+						if( !$object.val().match( ( $ObjRules.type !== undefined ) ? $options.rules[$ObjRules.type].json : "" ) ){
+						/* = Checa contra las reglas $rules = */
+							$valida &= false;
+							printError($object, $options.settings.errorMsg + $ObjRules.name + ": '" + $options.rules[$ObjRules.type].message + "'");
+						}
+					}
+					
+					if( $required == 'true' && $object.val() == ""){
+					/* = Checa si es requerido que no esté vacío = */
+						$valida &= false;
+						printError($object, $options.settings.errorMsg + $ObjRules.name + ": '"+$options.settings.requiredMsg+"'");
+					}
+
+				}
+			}
+
+			if( $ObjRules.specialCase !== undefined ){
+				if( $options.specialCases[$ObjRules.specialCase] !== undefined ){
+					result = $options.specialCases[$ObjRules.specialCase].funcion( $object )
+					if( !result ) printError($object, $options.settings.errorMsg + $ObjRules.name + ": '" + $options.specialCases[$ObjRules.specialCase].message + "'");
+					$valida &= result
+				}
+			}
+			
+		}
+		return ($valida) ? true : false;
 	}
 	
 	$.fn.validateForm = function( method ) {
