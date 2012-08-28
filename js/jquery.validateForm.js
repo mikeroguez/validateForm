@@ -31,11 +31,7 @@
 				}, options);			
 				
 				$this.bind('submit', function(){ return $this.validateForm('validate') } );
-				$this.find('input, textarea, select').bind('keyup', function(){ 
-					if( validateObject($(this)) ){
-						clearError($(this))
-					}
-				})
+				$this.find('input, textarea, select').bind('keyup', function(){ $this.validateForm('BindValidateObject'); })
 			});
 			
 		},
@@ -56,6 +52,14 @@
 				}
 			);
 			return ($valida) ? true : false;			
+		},
+
+		BindValidateObject: function(){
+			$this.find('input, textarea, select').bind('keyup', function(){ 
+				if( validateObject($(this)) ){
+					clearError($(this))
+				}
+			})
 		}
 		
 	}
