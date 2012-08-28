@@ -22,7 +22,9 @@
 						text : { json : /^[a-zA-ZáéíóúüÁÉÍÓÚÜñÑ0-9]+$/, message : 'Only text is allowed'},
 						alfanumeric : { json : /[0-9a-zA-Z]/, message : 'Only alphanumeric values are allowed'},
 						numeric : { json : /^-?\d+(?:\.\d{0,3})?$/, message : 'Only numbers are allowed'},
-						email : { json : /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, message : 'Enter a valid email'}					
+						email : { json : /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, message : 'Enter a valid email'},
+						dateISO: { json : /^(20|21)\d\d[-](0[1-9]|1[012])[-](0[1-9]|[12][0-9]|3[01])$/, message : 'Enter a valid date YYYY-MM-DD' },
+						dateMX: {json : /^(0[1-9]|[12][0-9]|3[01])[\/](0[1-9]|1[012])[\/](20|21)\d\d$/, message : 'Enter a valid date DD-MM-YYYY'}					
 					},
 					specialCases: {
 					}
